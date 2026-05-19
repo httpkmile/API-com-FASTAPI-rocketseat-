@@ -1,0 +1,7 @@
+CREATE TABLE "users" (
+	"id"	INTEGER,
+	"username"	TEXT NOT NULL,
+	"age"	INTEGER NOT NULL UNIQUE,
+	"uf"	TEXT NOT NULL,
+	PRIMARY KEY("id")
+);
