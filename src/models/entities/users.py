@@ -23,7 +23,7 @@ Users = Table(
         "age",
         Integer,
         nullable=False,
-        unique=True
+        
     ),  # Column age of type integer, cannot be null and must be unique
 
     Column(
