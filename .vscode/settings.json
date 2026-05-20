@@ -5,5 +5,7 @@
         "**/*.pyc": {"when": "$(basename).py" },
         "**/__pycache__": true,
         "**/.pytest_cache": true,
-    }
+    },
+    "js/ts.tsserver.web.projectWideIntellisense.enabled": true,
+    "js/ts.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true
 }
