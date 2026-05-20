@@ -1,6 +1,8 @@
     # FASTAPI - Projeto de Exemplo
 
-    Este é um projeto de API web construído com FastAPI, organizado em camadas de modelo, controlador, visão e rotas. O objetivo é demonstrar um padrão de arquitetura claro, com validação de entrada, persistência em banco de dados SQLite assíncrono e rotas REST para cadastro e consulta de usuários.
+    Este é um projeto de API web construído com FastAPI, organizado em camadas de modelo, controlador, visão e rotas. 
+    O objetivo é demonstrar um padrão de arquitetura claro, com validação de entrada, persistência em banco de dados 
+    SQLite assíncrono e rotas REST para cadastro e consulta de usuários.
 
     ## Visão geral do projeto
 
