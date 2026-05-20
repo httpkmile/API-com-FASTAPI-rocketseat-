@@ -42,8 +42,6 @@
     main    # branch principal com a implementação atual do projeto
     ```
 
-    > Esta visualização de branch ajuda recrutadores a identificar rapidamente a branch ativa e o fluxo principal de desenvolvimento.
-
     ## Observações
 
     - O projeto utiliza SQLite assíncrono com SQLAlchemy.
