@@ -1,6 +1,7 @@
 from typing import Optional
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import event
 
 # Connection string for an SQLite database using the aiosqlite driver
 CONNECTION_STRING = "sqlite+aiosqlite:///schema.db"
@@ -9,9 +10,8 @@ CONNECTION_STRING = "sqlite+aiosqlite:///schema.db"
 engine = create_async_engine(
     CONNECTION_STRING,
     echo=False,
-    pool_size=2,
-    max_overflow=0,
-    pool_timeout=30
+    # O SQLite usa StaticPool por padrão, aumentamos o timeout para evitar travas
+    connect_args={"timeout": 30} 
 )
 
 # Variable to create asynchronous sessions
@@ -22,6 +22,16 @@ async_session = sessionmaker(
 )
 
 
+
+
+@event.listens_for(engine.sync_engine, "connect")
+def set_sqlite_pragma(dbapi_connection, connection_record):
+    cursor = dbapi_connection.cursor()
+    cursor.execute("PRAGMA journal_mode=WAL;")  # Habilita o modo WAL para melhor concorrência
+    cursor.execute("PRAGMA synchronous=NORMAL;")  # Reduz a sincronização para melhorar o desempenho
+    cursor.close()
+
+    
 class DatabaseConnectionHandler:
     """
     Class to handle database connections using asynchronous

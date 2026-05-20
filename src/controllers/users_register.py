@@ -1,12 +1,13 @@
 from src.models.repositories.interfaces.users_repository import (
-    UsersRepositoryInterface,
+    UserRepositoryInterface,
 )
+from src.controllers.interfaces.users_register import UserRegisterInterface
 
-class UsersRegister:
+class UsersRegister(UserRegisterInterface):
 
     def __init__(
         self,
-        users_repository: UsersRepositoryInterface
+        users_repository: UserRepositoryInterface
     ) -> None:
         self.__users_repository = users_repository
 
