@@ -1,3 +1,3 @@
-from sqlalchemy import MetaData
+from sqlalchemy import MetaData 
 
-metadata = MetaData()
+metadata =MetaData ()
