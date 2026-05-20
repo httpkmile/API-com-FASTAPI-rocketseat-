@@ -1,5 +1,6 @@
 from src .models .settings .metadata import metadata 
 from sqlalchemy import Table ,Column ,Integer ,String 
+#criacao da tabela de usuarios usando SQLAlchemy
 
 Users =Table (
 "users",
