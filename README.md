@@ -42,8 +42,4 @@
     main    # branch principal com a implementação atual do projeto
     ```
 
-    ## Observações
 
-    - O projeto utiliza SQLite assíncrono com SQLAlchemy.
-    - A estrutura é pensada para manter responsabilidade separada entre camadas.
-    - Comentários em português foram adicionados para facilitar a compreensão do código.
