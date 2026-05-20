@@ -3,8 +3,9 @@
 from sqlalchemy import insert, select
 from src.models.entities.users import Users
 from src.models.settings.database_connection_handler import DatabaseConnectionHandler
+from src.models.repositories.interfaces.users_repository import UsersRepositoryInterface
 
-class UsersRepository:
+class UsersRepository(UsersRepositoryInterface):
 
     async def insert_users(self, user_info: dict) -> None:
         async with DatabaseConnectionHandler() as db:
