@@ -1,4 +1,5 @@
 class HttpRequest:
+    """Representa uma requisição HTTP interna usada nas camadas da aplicação."""
 
     def __init__(self, 
                 headers: dict = None,

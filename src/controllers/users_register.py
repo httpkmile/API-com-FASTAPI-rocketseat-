@@ -4,6 +4,7 @@ from src.models.repositories.interfaces.users_repository import (
 from src.controllers.interfaces.users_register import UserRegisterInterface
 
 class UsersRegister(UserRegisterInterface):
+    """Classe de controle responsável pelo cadastro de usuários."""
 
     def __init__(
         self,
@@ -12,10 +13,13 @@ class UsersRegister(UserRegisterInterface):
         self.__users_repository = users_repository
 
     async def register_user(self, user_data: dict) -> dict:
+        # Valida os dados do usuário antes de persistir no banco
         self.__validate_user_data(user_data)
 
+        # Insere o usuário no repositório de dados
         await self.__register_user(user_data)
 
+        # Prepara a resposta que será devolvida à camada de apresentação
         response = self.__format_response(user_data)
 
         return response
@@ -26,12 +30,12 @@ class UsersRegister(UserRegisterInterface):
 
         if uf not in ["SP", "RJ", "MG"]:
             raise Exception(
-                "UF must be one of the following: SP, RJ, MG."
+                "UF deve ser uma das seguintes: SP, RJ, MG."
             )
 
         if age < 0 or age > 120:
             raise Exception(
-                "Age must be between 0 and 120."
+                "A idade deve estar entre 0 e 120."
             )
 
     async def __register_user(self, user_data: dict) -> None:

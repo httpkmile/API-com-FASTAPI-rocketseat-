@@ -5,6 +5,7 @@ from src.models.settings.database_connection_handler import DatabaseConnectionHa
 from src.models.repositories.interfaces.users_repository import UserRepositoryInterface
 
 class UsersRepository(UserRepositoryInterface):
+    """Implementação do repositório de usuários usando SQLAlchemy."""
 
     async def insert_users(self, user_info: dict) -> None:
         async with DatabaseConnectionHandler() as db:
@@ -12,10 +13,9 @@ class UsersRepository(UserRepositoryInterface):
             await db.execute(query)
             await db.commit()
 
-    # O NOME DO MÉTODO DEVE SER EXATAMENTE ESTE:
     async def select_user_by_username(self, username: str) -> dict:
         async with DatabaseConnectionHandler() as db:
-            # Tente primeiro sem o ".c". Se der erro de "attribute c", adicione-o de volta.
+            # Consulta o usuário por username na tabela users
             query = select(Users).where(Users.c.username == username)
 
             result = await db.execute(query)
@@ -23,5 +23,5 @@ class UsersRepository(UserRepositoryInterface):
 
         users_list = [dict(row._mapping) for row in rows]
         
-        # Retorna o primeiro usuário encontrado ou None
+        # Retorna o primeiro usuário encontrado ou None se não existir
         return users_list[0] if users_list else None

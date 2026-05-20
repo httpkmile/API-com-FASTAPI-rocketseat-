@@ -1,10 +1,10 @@
 from src.models.repositories.users_repository import UsersRepository
 import pytest
 
+# Testes de repositório de usuários usando operações de inserção e busca
 @pytest.mark.skip(reason="testes de inserção e seleção de usuários")
 @pytest.mark.asyncio
 async def test_insert_user():
-    
     new_user = {
         "username": "NomeDeTeste",
         "age": 99,
@@ -18,7 +18,7 @@ async def test_insert_user():
     }
 
     new_user3 = {
-        "username": "NomeDeTeste",
+        "username": "NomeDeTeste3",
         "age": 99,
         "uf": "SP"
     }

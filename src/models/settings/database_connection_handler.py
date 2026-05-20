@@ -3,24 +3,23 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import event
 
-# Connection string for an SQLite database using the aiosqlite driver
+# String de conexão para um banco SQLite usando o driver aiosqlite
 CONNECTION_STRING = "sqlite+aiosqlite:///schema.db"
 
-# Setting up the asynchronous engine and sessionmaker
+# Configura o engine assíncrono e o sessionmaker
 engine = create_async_engine(
     CONNECTION_STRING,
     echo=False,
-    # O SQLite usa StaticPool por padrão, aumentamos o timeout para evitar travas
-    connect_args={"timeout": 30} 
+    # O SQLite usa StaticPool por padrão; aumentamos o timeout para evitar travas
+    connect_args={"timeout": 30}
 )
 
-# Variable to create asynchronous sessions
+# Variável para criar sessões assíncronas do SQLAlchemy
 async_session = sessionmaker(
     bind=engine,
     class_=AsyncSession,
     expire_on_commit=False
 )
-
 
 
 
